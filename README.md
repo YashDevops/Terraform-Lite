@@ -35,7 +35,7 @@ module "vpc"  { **#anyname**
 }
 ```
 
-#### Its so simple the backend config and route will be taken care
+#### Its so simple the backend will configure the neccessary setting and all other things will be taken care
 
 ---
 
