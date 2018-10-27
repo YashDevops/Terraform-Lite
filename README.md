@@ -1,6 +1,6 @@
 # Terrform-Lite :octocat:
 
-### A tool build by me by extending TERRAFORM and making it complete dynamic and modular so that user can just setup the environment or stack with starting from scratch.
+### A tool build by me by extending TERRAFORM and making it complete dynamic and modular so that user can just setup the environment or stack without starting from scratch.
 
 #### The various Resources of AWS are defined as modules in a very dynamic way that user just need to use simple configuration in its stack and is ready to go
 
