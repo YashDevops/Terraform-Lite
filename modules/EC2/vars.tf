@@ -15,4 +15,9 @@ variable "ami" {
 
 variable "subnet_id" {
   description = "The Subnet in which you want to launch your instance"
+  default     = ""
+}
+
+variable "key_name" {
+  description = "The Key Pair that you want to use to login to ec2 instance"
 }

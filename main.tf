@@ -1,24 +1,21 @@
-module "vpc" {
-  source             = "modules/VPC"
-  vpc_cidr_block     = "192.168.0.0/16"
-  public_cidr_block  = "192.168.1.0/24"
-  public_az_region   = "us-east-1a"
-  private_cidr_block = "192.168.2.0/24"
-  private_az_region  = "us-east-1b"
+module "key" {
+  source             = "modules/KEY"
+  key_name           = ""
+  PATH_TO_PUBLIC_KEY = ""
 }
 
 module "Nginx" {
-  source    = "modules/EC2"
-  count     = 1
-  ins_type  = "t2.micro"
-  ami       = "${lookup(var.ec2_ami_ubuntu,var.region)}"
-  subnet_id = "${module.vpc.public_subnet_id}"
+  source   = "modules/EC2"
+  count    = 1
+  ins_type = "t2.micro"
+  ami      = "${lookup(var.ec2_ami_ubuntu,var.region)}"
+  key_name = "${module.key.key_name}"
 }
 
 module "node-js" {
-  source    = "modules/EC2"
-  count     = 1
-  ins_type  = "t2.micro"
-  ami       = "${lookup(var.ec2_ami_ubuntu,var.region)}"
-  subnet_id = "${module.vpc.private_subnet_id}"
+  source   = "modules/EC2"
+  count    = 1
+  ins_type = "t2.micro"
+  ami      = "${lookup(var.ec2_ami_ubuntu,var.region)}"
+  key_name = "${module.key.key_name}"
 }
