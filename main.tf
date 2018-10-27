@@ -7,10 +7,18 @@ module "vpc" {
   private_az_region  = "us-east-1b"
 }
 
-module "instance" {
+module "Nginx" {
   source    = "modules/EC2"
   count     = 1
   ins_type  = "t2.micro"
   ami       = "${lookup(var.ec2_ami_ubuntu,var.region)}"
   subnet_id = "${module.vpc.public_subnet_id}"
+}
+
+module "node-js" {
+  source    = "modules/EC2"
+  count     = 1
+  ins_type  = "t2.micro"
+  ami       = "${lookup(var.ec2_ami_ubuntu,var.region)}"
+  subnet_id = "${module.vpc.private_subnet_id}"
 }

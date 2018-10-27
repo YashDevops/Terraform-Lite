@@ -1,3 +1,3 @@
 access_key=""
 secret_key=""
-region="ap-southeast-1"
+region="us-east-1"
